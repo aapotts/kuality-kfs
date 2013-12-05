@@ -1,3 +1,4 @@
+=begin
 
 class InternalBillingDocument < TransactionalDocument
 
@@ -9,3 +10,5 @@ class InternalBillingDocument < TransactionalDocument
   value(:processing_org_ro) { |b| b.frm.table(summary: 'General Info')[0][1].text }
 
 end
+
+=end

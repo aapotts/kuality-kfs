@@ -16,7 +16,7 @@ class BasePage < PageFactory
 
     def glbl(*titles)
       titles.each do |title|
-        action(damballa(title)) { |b| b.frm.button(class: 'globalbuttons', title: title).click; b.loading }
+        action(damballa(title)) { |b| b.frm.button(class: 'globalbuttons', title: title).click }
       end
     end
 
@@ -38,28 +38,27 @@ class BasePage < PageFactory
     end
 
     def global_buttons
-      glbl 'Reject', 'blanket approve', 'close', 'cancel', 'reload',
+      glbl 'blanket approve', 'close', 'cancel', 'reload',
            'approve', 'disapprove', 'submit', 'Send Notification'
-      action(:save) { |b| b.frm.button(name: 'methodToCall.save', title: 'save').click; b.loading }
-      # Explicitly defining the "recall" button to keep the method name at "recall" instead of "recall_current_document"...
-      action(:edit) { |b| b.edit_button.click; b.loading }
+      action(:save) { |b| b.frm.button(name: 'methodToCall.save', title: 'save').click }
+      action(:edit) { |b| b.edit_button.click }
       element(:edit_button) { |b| b.frm.button(name: 'methodToCall.editOrVersion') }
-      action(:delete_selected) { |b| b.frm.button(class: 'globalbuttons', name: 'methodToCall.deletePerson').click; b.loading }
+      action(:delete_selected) { |b| b.frm.button(class: 'globalbuttons', name: 'methodToCall.deletePerson').click }
       element(:send_button) { |b| b.frm.button(class: 'globalbuttons', name: 'methodToCall.sendNotification', title: 'send') }
-      action(:send_fyi) { |b| b.send_button.click; b.loading }
+      action(:send_fyi) { |b| b.send_button.click }
     end
 
     def tab_buttons
-      action(:expand_all) { |b| b.frm.button(name: 'methodToCall.showAllTabs').click; b.loading }
+      action(:expand_all) { |b| b.frm.button(name: 'methodToCall.showAllTabs').click }
     end
 
     def tiny_buttons
-      action(:search) { |b| b.frm.button(title: 'search', value: 'search').click; b.loading }
-      action(:clear) { |b| b.frm.button(name: 'methodToCall.clearValues').click; b.loading }
-      action(:cancel_button) { |b| b.frm.link(title: 'cancel').click; b.loading }
-      action(:yes) { |b| b.frm.button(name: 'methodToCall.rejectYes').click; b.loading }
-      action(:no) {|b| b.frm.button(name: 'methodToCall.rejectNo').click; b.loading }
-      action(:add) { |b| b.frm.button(name: 'methodToCall.addNotificationRecipient.anchor').click; b.loading }
+      action(:search) { |b| b.frm.button(title: 'search', value: 'search').click }
+      action(:clear) { |b| b.frm.button(name: 'methodToCall.clearValues').click }
+      action(:cancel_button) { |b| b.frm.link(title: 'cancel').click }
+      action(:yes) { |b| b.frm.button(name: 'methodToCall.rejectYes').click }
+      action(:no) {|b| b.frm.button(name: 'methodToCall.rejectNo').click }
+      action(:add) { |b| b.frm.button(name: 'methodToCall.addNotificationRecipient.anchor').click }
     end
 
     def search_results_table
@@ -146,7 +145,7 @@ class BasePage < PageFactory
     # that matches the green button's link title tag.
     def green_buttons(links={})
       links.each_pair do |name, title|
-        action(name) { |b| b.frm.link(title: title).click; b.loading }
+        action(name) { |b| b.frm.link(title: title).click }
       end
     end
 
