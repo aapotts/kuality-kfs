@@ -28,4 +28,7 @@ class AccountPage < BasePage
   element(:income_guideline_txt) { |b| b.frm.text_field(name: 'document.newMaintainableObject.accountGuideline.accountIncomeGuidelineText') }
   element(:purpose_text) { |b| b.frm.text_field(name: 'document.newMaintainableObject.accountGuideline.accountPurposeText') }
 
+  element(:income_stream_financial_cost_cd) { |b| b.frm.select(name: 'document.newMaintainableObject.incomeStreamFinancialCoaCode') }
+  element(:income_stream_account_number) { |b| b.frm.text_field(name: 'document.newMaintainableObject.incomeStreamAccountNumber') }
+
 end
